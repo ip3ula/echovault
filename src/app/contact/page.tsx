@@ -1,18 +1,23 @@
+import { FieldQuery, ButtonQuery } from "../lib/defintions";
+
 import Form from "../ui/components/Form";
-import Headline from "../ui/components/Headline";
-import SubHeadLine from "../ui/components/SubHeadline";
 
 export default function Page() {
-    const fields = [
+    const form = {
+        headline: 'Get in Touch',
+        subHeadline: "Questions, feedback, or collaboration? We'd love to hear from you.",
+        fields: [
         {name: 'Name', type: 'text'},
-        {name: 'Email', type: 'Email'},
+        {name: 'Email', type: 'email'},
         {name: 'Message', type: 'textarea'},
+    ],
+    buttons:[
+        {name: 'Send a Message', onClick: ''}
     ]
+    }
     return(
-        <>
-         <Headline text="Get in Touch"/>
-         <SubHeadLine text="Questions, feedback, or collaboration? We'd love to hear from you."/>
-         <Form fields={fields} buttonText="Send Message" />
-        </>
+        <div className="py-20 sm:py-40 flex flex-col items-center justify-center">
+            <Form form={form} />
+        </div>
     )
 }

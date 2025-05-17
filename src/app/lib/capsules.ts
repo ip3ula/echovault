@@ -1,16 +1,18 @@
-export const capsules = [
+import { CapsuleQuery } from "./defintions";
+
+export const capsules: CapsuleQuery[] = [
       {
           id: "cps-001",
               title: "Letter to My Future Self",
                   message: "Hey future me,\nTake breaks and celebrate small wins. You’re doing great.",
-                      unlockDate: "2026-01-01T00:00:00.000Z",
-                          createdAt: "2025-05-15T12:00:00.000Z",
+                      unlockDate: "2024-01-01T00:00:00.000Z",
+                          createdAt: "2023-05-15T12:00:00.000Z",
                               isPublic: false,
                                   media: {
                                         type: "image",
                                               url: "https://example.com/image1.jpg"
                                                   },
-                                                      sealed: true,
+                                                      sealed: false,
                                                           userId: "user-123"
                                                             },
                                                               {
@@ -21,7 +23,7 @@ export const capsules = [
                                                                                   createdAt: "2025-04-02T15:10:00.000Z",
                                                                                       isPublic: true,
                                                                                           media: {
-                                                                                                type: "video",
+                                                                                                type: "audio",
                                                                                                       url: "https://example.com/video1.mp4"
                                                                                                           },
                                                                                                               sealed: true,

@@ -1,7 +1,7 @@
 export default function Paragraph({text} : {text: string}) {
     return(
         <section>
-            <p>{text}</p>
+            <p className="text-center font-bold text-xl">{text}</p>
         </section>
     )
 }
