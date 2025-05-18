@@ -1,4 +1,4 @@
-export default function List({list}) {
+export default function List({list}: {list: string[]}) {
     return(
         <ul>
             {

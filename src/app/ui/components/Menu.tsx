@@ -18,11 +18,11 @@ export default function Menu() {
     console.log(pathname)
 
     return (
-        <div className="fixed bg-roseWater w-[50vw] max-w-70 flex flex-col top-17 left-[6vw] border border-node gap-3 p-5 sm:top-20">
+        <div className="fixed bg-roseWater w-[50vw] max-w-70 opacity-90 flex flex-col top-17 left-[6vw] border border-node gap-3 p-5 lg:top-20">
             {links.map(({ name, href }) => (
                 <Link key={name} href={href}>
                    <h1 className={clsx(
-                    'text-sageGreen text-center font-extrabold text-2xl',
+                    'text-white text-center font-extrabold text-2xl',
                     {
                         'underline': pathname === href
                     }

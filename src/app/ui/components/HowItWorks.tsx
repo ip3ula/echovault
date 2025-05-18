@@ -1,4 +1,3 @@
-import Headline from "./Headline";
 import { HowItWorksQuery } from "../../lib/defintions";
 
 export default function HowItWorks() {
@@ -18,12 +17,12 @@ export default function HowItWorks() {
       ];
     return (
         <section className="py-10 px-5">
-               <Headline text="How It Works"/>
-               <dl className="px-5 flex flex-col gap-5">
+            <h1 className="text-sageGreen text-center font-extrabold text-3xl py-5">How It Works</h1> 
+               <dl className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 justify-center items-center p-5 py-15">
                  {howItWorks.map(({ step, description }, i) => (
-                   <div key={i}>
-                     <dt className="text-2xl text-sageGreen py-2"><span className="font-bold text-roseWater">Step {i + 1} - </span>{step}</dt>
-                     <dd className="text-stone-400 text-xl pl-2">{description}</dd>
+                   <div key={i} className="border border-node">
+                     <dt className="text-2xl text-white py-2 bg-roseWater text-center p-5 font-bold">{step}</dt>
+                     <dd className="text-white text-xl pl-2 bg-sageGreen p-5 text-center">{description}</dd>
                    </div>
                  ))}
                </dl>

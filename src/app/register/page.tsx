@@ -1,12 +1,19 @@
-import { FieldQuery, ButtonQuery, AdditionalLinkesQuery } from "../lib/defintions"
+'use client'
+
+import { FormQuery } from "../lib/defintions"
 
 import Headline from "../ui/components/Headline"
 import SubHeadLine from "../ui/components/SubHeadline"
 import Form from "../ui/components/Form"
-import AdditionalLinks from "../ui/components/AdditionalLinks"
 
 export default function Page() {
-    const form = {
+    const handleSingUp = () => {
+
+    }
+    const handleGoogle = () => {
+
+    }
+    const form: FormQuery = {
         headline: 'Create Your Time Capsule Account',
         subHeadline: "Start saving messages, memories, and moments for the future.It only takes a minute to begin your journey.",
         fields: [
@@ -16,8 +23,8 @@ export default function Page() {
         {name: 'Confirm Password', type: 'password'},
     ],
     buttons: [
-        {name: 'Sign Up', onClick: ''},
-        {name: 'Continue with Google', onClick: ''}
+        {name: 'Sign Up', onClick: handleSingUp},
+        {name: 'Continue with Google', onClick: handleGoogle}
     ],
     additionalLinks:  [
         {text: 'Already have an account?', linkText: 'Log In', href: '/login'},

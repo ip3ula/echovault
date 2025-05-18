@@ -1,7 +1,6 @@
 import { LinkQuery } from "../../lib/defintions";
 
 import Link from "next/link"
-import Headline from "./Headline";
 import SubHeadLine from "./SubHeadline";
 
 export default function Footer() {

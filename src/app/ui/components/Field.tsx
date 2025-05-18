@@ -1,7 +1,9 @@
+import { Field as FieldQuery } from "../../lib/defintions";
+
 export default function Field({ field }: { field: FieldQuery }) {
   if (field.type === 'radio') {
     return (
-      <div className="flex relative gap-2 border border-node bg-roseWater text-sageGreen w-[90%] px-5 py-2">
+      <div className="flex relative gap-2 border border-node bg-roseWater text-white w-[90%] px-5 py-2 lg:py-3">
         <p>{field.name}</p>
         <div className="flex absolute right-0">
           {field.values.map(value => {
@@ -17,8 +19,8 @@ export default function Field({ field }: { field: FieldQuery }) {
                 />
                 <label
                   htmlFor={id}
-                  className="px-5 py-2 border-l border-node cursor-pointer transition
-                             peer-checked:bg-sageGreen peer-checked:text-roseWater"
+                  className="px-5 py-2 lg:py-3 border-l border-node cursor-pointer transition
+                             peer-checked:bg-sageGreen"
                 >
                   {value}
                 </label>
@@ -34,7 +36,7 @@ export default function Field({ field }: { field: FieldQuery }) {
     return (
       <textarea
         placeholder={field.name}
-        className="border border-node bg-roseWater text-sageGreen w-[90%] px-5 py-2 outline-0 focus:border-2"
+        className="border border-node bg-roseWater text-white w-[90%] px-5 py-2 outline-0 focus:border-2"
         rows={4}
         name={field.name}
       />
@@ -45,7 +47,7 @@ export default function Field({ field }: { field: FieldQuery }) {
     <input
       type={field.type}
       placeholder={field.name}
-      className="border border-node bg-roseWater text-sageGreen w-[90%] px-5 py-2 outline-0 focus:border-2"
+      className="border border-node bg-roseWater text-white w-[90%] px-5 py-2 lg:py-3 outline-0 focus:border-2"
       name={field.name}
     />
   );

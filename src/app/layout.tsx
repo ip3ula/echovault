@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Share_Tech } from "next/font/google";
 import "./ui/styles/globals.css";
 
 import Nav from "./ui/components/Nav";
+import Message from "./ui/components/Message";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,6 +14,12 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export const shareTech = Share_Tech({
+  variable: "--font-share-tech",
+  subsets: ["latin"],
+  weight: "400"
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -27,9 +34,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body style={{background: '#E3E8E9'}}
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${shareTech.variable} antialiased`}
       >
         <Nav />
+        <Message />
         {children}
       </body>
     </html>

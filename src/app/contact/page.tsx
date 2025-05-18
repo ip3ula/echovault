@@ -1,9 +1,14 @@
-import { FieldQuery, ButtonQuery } from "../lib/defintions";
+'use client'
+
+import { FormQuery } from "../lib/defintions";
 
 import Form from "../ui/components/Form";
 
 export default function Page() {
-    const form = {
+    const handleClick = () => {
+
+    }
+    const form: FormQuery = {
         headline: 'Get in Touch',
         subHeadline: "Questions, feedback, or collaboration? We'd love to hear from you.",
         fields: [
@@ -12,7 +17,7 @@ export default function Page() {
         {name: 'Message', type: 'textarea'},
     ],
     buttons:[
-        {name: 'Send a Message', onClick: ''}
+        {name: 'Send a Message', onClick: handleClick}
     ]
     }
     return(

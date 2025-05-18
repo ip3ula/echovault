@@ -1,4 +1,4 @@
-import { CardQuery, ButtonQuery } from "../../lib/defintions";
+import { CardQuery, Button as ButtonQuery } from "../../lib/defintions";
 
 import Button from "./Button";
 import Headline from "./Headline";

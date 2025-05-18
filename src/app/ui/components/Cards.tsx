@@ -1,3 +1,5 @@
+'use client'
+
 import { CardQuery } from "../../lib/defintions";
 
 import Card from "./Card";

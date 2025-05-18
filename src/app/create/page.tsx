@@ -1,7 +1,15 @@
+'use client'
+
+import { FormQuery } from "../lib/defintions"
+
 import Form from "../ui/components/Form"
 
 export default function Page() {
-    const form = {
+    const handleClick = () => {
+
+    }
+    
+    const form: FormQuery = {
         headline: 'Create Your Time Capsule',
         subHeadline: "Write a message to your future self. We'll lock it away until the date you choose.",
         fields: [
@@ -12,7 +20,7 @@ export default function Page() {
         {name: "Make It Public", type: "radio", values: ["yes", "no"]},      
     ],
     buttons: [
-        {name: 'Seal My Capsule', onClick: ''}
+        {name: 'Seal My Capsule', onClick: handleClick}
     ]
     }
     return(

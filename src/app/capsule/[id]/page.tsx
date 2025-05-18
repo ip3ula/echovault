@@ -12,6 +12,13 @@ import { ButtonQuery } from '../../lib/defintions';
 export default function Page() {
   const {id} = useParams()
   const [copied, setCopied] = useState(false)
+
+  const handleEdit = () => {
+
+  }
+  const handleDelete = () => {
+
+  }
   const capsule = capsules.find(capsule => capsule.id === id)
 
   if (!capsule) {
@@ -24,25 +31,27 @@ export default function Page() {
   }
 
   const buttons: ButtonQuery[] = [
-    {name: copied ? 'copied' : 'Copy Capsule ID', onClick: handleCopy}
+    {name: copied ? 'copied' : 'Copy Capsule ID', onClick: handleCopy},
+    {name: "edit", onClick: handleEdit},
+    {name: "delete", onClick: handleDelete}
   ]
 
   return (
-    <div className="p-4">
-      {capsule.sealed ? (
-        <>
-          <Headline text="Capsule Still Sealed" />
-          <SubHeadLine text={`This capsule is sealed and will unlock on: ${capsule.unlockDate}`} />
-          <Paragraph text="You can't view its contents until that date." />
-        </>
-      ) : (
-        <>
-          <Headline text="Capsule Unsealed" />
-          <SubHeadLine text={`Originally sealed until: ${capsule.unlockDate}`} />
-          <Paragraph text={capsule.message} />
-          <Button button={buttons[0]} />
-        </>
-      )}
+    <div className="p-5 flex justify-center h-screen items-center">
+        <div className='border border-node lg:grid lg:grid-cols-3 max-w-200'>
+          <div className="bg-roseWater p-5 lg:p-10 lg:col-span-1 text-center">
+          <Headline  text={capsule.sealed ?'Capsule Still Sealed' : 'Capsule Unsealed'} />
+          <SubHeadLine text={capsule.sealed ? `This capsule is sealed and will unlock on: ${capsule.unlockDate}` : `Originally sealed until: ${capsule.unlockDate}`} />
+          </div>
+          <div className='bg-sageGreen p-5 lg:p-10 text-white lg:col-span-2 '>
+          <Paragraph text={capsule.sealed ? "You can't view its contents until that date.": capsule.message} />
+          <div className='py-10 flex flex-col gap-3'>
+            {buttons.map(button => (
+              <Button key={button.name} button={button} />
+            ))}
+          </div>
+          </div>
+        </div>
     </div>
   )
 }

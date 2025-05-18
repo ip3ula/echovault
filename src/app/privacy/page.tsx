@@ -4,12 +4,12 @@ import Paragraph from "../ui/components/Paragraph";
 export default function Page() {
   return (
     <div className="py-20 flex justify-center sm:py-40">
-      <div className="w-[90vw] sm:w-[70vw] grid flex-col-1 sm:grid-cols-3 border border-node">
-        <div className="bg-roseWater p-5 sm:col-span-1">
+      <div className="w-[90vw] sm:w-[70vw] grid flex-col-1 lg:grid-cols-3 border border-node">
+        <div className="bg-roseWater p-5 lg:col-span-1">
           <Headline text="Privacy Policy" />
         </div>
 
-        <div className="bg-sageGreen p-5 sm:col-span-2 text-white space-y-4">
+        <div className="bg-sageGreen p-5 lg:col-span-2 text-white space-y-4">
           <Paragraph text="At Echo Vault, your memories are personal — and we treat them that way. We’re committed to protecting your privacy and ensuring your data stays secure." />
 
           <Paragraph text="We collect only the information we need to provide our service, including your name, email, and password (securely encrypted), the content of your capsules, and your account activity such as login dates or when you seal capsules." />

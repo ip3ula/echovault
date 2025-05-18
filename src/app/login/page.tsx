@@ -1,7 +1,18 @@
+'use client'
+
+import { FormQuery } from "../lib/defintions"
+
 import Form from "../ui/components/Form"
 
 export default function Page() {
-    const form = {
+    const handleLogin = () => {
+
+    }
+    const handleGoogle = () => {
+
+    }
+
+    const form: FormQuery = {
         headline: 'Welcome back!',
         subHeadline: "Access your saved time capsules and continue writing to the future.",
         fields: [
@@ -9,8 +20,8 @@ export default function Page() {
         {name: 'Password', type: 'password'},
     ],
     buttons: [
-    {name: 'Log In', onClick: ''},
-    {name: 'Continue with Google', onClick: ''}
+    {name: 'Log In', onClick: handleLogin},
+    {name: 'Continue with Google', onClick: handleGoogle}
     ],
     additionalLinks: [
                 {text: 'Don’t have an account?', linkText: 'Sign Up', href: '/register'},

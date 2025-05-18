@@ -1,20 +1,29 @@
 
 type FieldType = 'text' | 'email' | 'textarea' | 'password' | 'radio' | 'password' | 'date' | 'file'
 
-export interface FieldQuery{
+export type Field = {
     name: string,
     type: FieldType,
     values?: string[]
 }
 
-export interface ButtonQuery{
+export type Button = {
     name: string,
     onClick:  () => void
 }
-export interface AdditionalLinkesQuery{
+
+type AdditionalLinkes = {
     text: string,
     linkText: string,
     href: string
+}
+
+export interface FormQuery{
+    headline: string,
+    subHeadline: string,
+    fields: Field[],
+    buttons: Button[],
+    additionalLinks?: AdditionalLinkes[]
 }
 
 export interface CardQuery{
@@ -24,12 +33,6 @@ export interface CardQuery{
     list: string[],
     buttonText: string
     buttonFunction: () => void
-}
-
-export interface PrivacyQuery{
-    title: string,
-    description?: string,
-    list?: string[]
 }
 
 type Media = {
