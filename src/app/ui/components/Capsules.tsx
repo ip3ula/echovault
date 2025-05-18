@@ -6,7 +6,7 @@ export default function Capsules({isPublic}: {isPublic: boolean}) {
     ? capsules.filter(capsule => capsule.isPublic === isPublic) 
     : capsules
     return (
-        <section className="grid grid-cols-1 sm:grid-cols-2 gap-5 justify-center items-center p-5 lg:p-10 py-15">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-5 justify-center items-center p-5 lg:p-10 py-15">
             {filtered.map(capsule => (
                 <Capsule capsule={capsule} key={capsule.id} />
             )

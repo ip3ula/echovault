@@ -35,13 +35,14 @@ export default function Page() {
     {name: "edit", onClick: handleEdit},
     {name: "delete", onClick: handleDelete}
   ]
-
+  const date = new Date(capsule.unlockDate);
+  const formatted = date.toLocaleDateString();
   return (
     <div className="p-5 flex justify-center h-screen items-center">
         <div className='border border-node lg:grid lg:grid-cols-3 max-w-200'>
           <div className="bg-roseWater p-5 lg:p-10 lg:col-span-1 text-center">
           <Headline  text={capsule.sealed ?'Capsule Still Sealed' : 'Capsule Unsealed'} />
-          <SubHeadLine text={capsule.sealed ? `This capsule is sealed and will unlock on: ${capsule.unlockDate}` : `Originally sealed until: ${capsule.unlockDate}`} />
+          <SubHeadLine text={capsule.sealed ? `This capsule is sealed and will unlock on: ${formatted}` : `Originally sealed until: ${formatted}`} />
           </div>
           <div className='bg-sageGreen p-5 lg:p-10 text-white lg:col-span-2 '>
           <Paragraph text={capsule.sealed ? "You can't view its contents until that date.": capsule.message} />
