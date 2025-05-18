@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const shareTech = Share_Tech({
+const shareTech = Share_Tech({
   variable: "--font-share-tech",
   subsets: ["latin"],
   weight: "400"
