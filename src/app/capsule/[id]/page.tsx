@@ -7,7 +7,7 @@ import Paragraph from '../../ui/components/Paragraph'
 import Headline from '../../ui/components/Headline'
 import SubHeadLine from '../../ui/components/SubHeadline'
 import Button from '../../ui/components/Button'
-import { ButtonQuery } from '../../lib/defintions';
+import { Button as ButtonQuery } from '../../lib/defintions';
 
 export default function Page() {
   const {id} = useParams()
