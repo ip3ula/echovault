@@ -4,6 +4,8 @@ type FieldType = 'text' | 'email' | 'textarea' | 'password' | 'radio' | 'passwor
 export type Field = {
     name: string,
     type: FieldType,
+    value?: string | File,
+    onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void,
     values?: string[]
 }
 

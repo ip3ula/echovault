@@ -1,5 +1,3 @@
-'use client'
-
 import Hero from "./ui/components/Hero";
 import HowItWorks from "./ui/components/HowItWorks";
 import PublicCapsules from "./ui/components/PublicCapsules";

@@ -3,7 +3,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import clsx from "clsx";
 
-export default function Menu() {
+export default function Menu({setMenu}) {
     const pathname = usePathname()
     const links: LinkQuery[] = [
         { name: 'home', href: '/' },
@@ -18,9 +18,9 @@ export default function Menu() {
     console.log(pathname)
 
     return (
-        <div className="fixed bg-roseWater w-[50vw] max-w-70 opacity-90 flex flex-col top-17 left-[6vw] border border-node gap-3 p-5 lg:top-20">
+        <div className="fixed bg-roseWater w-[50vw] max-w-70 opacity-90 flex flex-col top-17 left-[6vw] border border-node gap-3 p-5 lg:top-20 z-20">
             {links.map(({ name, href }) => (
-                <Link key={name} href={href}>
+                <Link key={name} href={href} onClick={() => setMenu(false)}>
                    <h1 className={clsx(
                     'text-white text-center font-extrabold text-2xl',
                     {

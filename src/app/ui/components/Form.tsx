@@ -16,7 +16,7 @@ export default function Form({form}: {form: FormQuery}) {
         <section className='py-15'>
             <form className='flex flex-col gap-2 lg:gap-4 items-center justify-center'>
                   {form.fields.map(field => (
-                      <Field field={field} key={field.name}/>))}
+                      <Field field={field} key={field.name} />))}
                       <div className='mt-15 flex flex-col gap-3 w-full items-center'>
                   {form.buttons.map(button => (
                     <Button button={button} key={button.name} />                   

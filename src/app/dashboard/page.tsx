@@ -1,6 +1,3 @@
-'use client'
-
-import { useRouter } from "next/navigation"
 import { Button as ButtonQuery } from "../lib/defintions"
 
 import GreenHeadline from "../ui/components/GreenHeadline"
@@ -9,12 +6,10 @@ import Capsules from "../ui/components/Capsules"
 import Button from "../ui/components/Button"
 
 export default function Page() {
-    const router = useRouter()
         const handleClick = () => {
-          router.push('/create')
         }
     const buttons: ButtonQuery[] = [
-        {name: 'Create New Capsule', onClick: handleClick}
+        {name: 'Create New Capsule', onClick: 'handleClick'}
     ]
     return(
         <div className="pt-12 sm:px-5 flex items-center flex-col ">

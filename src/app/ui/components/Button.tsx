@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { Button as ButtonQuery } from "../../lib/defintions";
 
