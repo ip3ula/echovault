@@ -8,7 +8,7 @@ export default function Button({ button }: {button: ButtonQuery} ) {
             <button
                 onClick={typeof button.onClick === "function" ? button.onClick as React.MouseEventHandler<HTMLButtonElement> : undefined}
                 type={button.type}
-                className="bg-node text-white w-[90%] px-5 py-2 block mx-auto lg:py-3 hover:cursor-pointer"
+                className="bg-node text-white w-[90%] px-5 py-3 block mx-auto lg:py-4 hover:cursor-pointer"
             >
                 {button.name}
             </button>

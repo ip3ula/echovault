@@ -54,7 +54,7 @@ export default function Page() {
         ],
         additionalLinks: [
             { text: "Don't have an account?", linkText: "Sign Up", href: "/register" },
-            { text: "Forgot your password?", linkText: "Reset Password", href: "/reset" }
+            // { text: "Forgot your password?", linkText: "Reset Password", href: "/reset" }
         ],
         message
     };
