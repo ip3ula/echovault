@@ -6,7 +6,7 @@ export default function Field({ field }: { field: FieldQuery }) {
       <div className="flex relative gap-2 border border-node bg-roseWater text-white w-[90%] px-5 py-3 lg:py-4">
         <p>{field.name}</p>
         <div className="flex absolute right-1">
-          {field.values.map((value) => {
+          {field.values?.map((value) => {
             const id = `${field.name}-${value}`;
             return (
               <div key={value}>

@@ -2,7 +2,13 @@
 
 import Image from 'next/image';
 
-export default function UserData({user}) {
+interface User {
+    image?: string | null | undefined;
+    name: string | null | undefined;
+    email: string | null | undefined;
+}
+
+export default function UserData({user}: { user: User }) {
     return (
         <div className="flex items-center gap-2 sm:gab-3 mb-10 w-full">
             {user.image ? (
@@ -33,7 +39,7 @@ export default function UserData({user}) {
         </span>
             )}
             <div>
-        <h1 className="text-white font-extrabold text-lg lg:text-2xl">{user.name}</h1>
+        <h1 className="text-white font-extrabold text-lg lg:text-2xl">{user.name ?? ''}</h1>
         <p className="text-nistyBlue text-sm lg:text-base">{user.email}</p>
             </div>
           </div>

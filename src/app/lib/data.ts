@@ -54,7 +54,7 @@ export async function getPublicCapsules() {
   }
 }
 
-export async function getCapsule(id) {
+export async function getCapsule(id: string) {
   try {
     const data = await sql`
       SELECT 

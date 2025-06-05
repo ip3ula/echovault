@@ -7,7 +7,12 @@ import Headline from './headlines/Headline'
 import SubHeadline from './headlines/SubHeadline'
 import Button from "./common/Button";
 
-export default function Hero({headline, subHeadline}) {
+interface HeroProps {
+  headline: string;
+  subHeadline: string;
+}
+
+export default function Hero({headline, subHeadline}: HeroProps) {
     const router = useRouter()
     const handleClick = () => {
       router.push('/create')

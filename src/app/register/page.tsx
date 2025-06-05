@@ -41,14 +41,14 @@ export default function Page() {
         headline: 'Create Your Time Capsule Account',
         subHeadline: "Start saving messages, memories, and moments for the future. It only takes a minute to begin your journey.",
         fields: [
-            { name: 'Name', type: 'text' as const, value: name, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value) },
-            { name: 'Email', type: 'email' as const, value: email, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value) },
-            { name: 'Password', type: 'password' as const, value: password, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value) },
-            { name: 'Confirm Password', type: 'password' as const, value: confirmPassword, onChange: (e: React.ChangeEvent<HTMLInputElement>) => setConfirmPassword(e.target.value) },
+            { name: 'Name', type: 'text' as const, value: name, onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setName(e.target.value) },
+            { name: 'Email', type: 'email' as const, value: email, onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setEmail(e.target.value) },
+            { name: 'Password', type: 'password' as const, value: password, onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setPassword(e.target.value) },
+            { name: 'Confirm Password', type: 'password' as const, value: confirmPassword, onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setConfirmPassword(e.target.value) },
         ],
         buttons: [
             { name: 'Sign Up', type: 'submit' as const, onClick: handleSignUp },
-            { name: 'Continue with Google', type: 'button'as const, onClick: handleGoogle }
+            { name: 'Continue with Google', type: 'button' as const, onClick: handleGoogle }
         ],
         additionalLinks: [
             { text: 'Already have an account?', linkText: 'Log In', href: '/login' },

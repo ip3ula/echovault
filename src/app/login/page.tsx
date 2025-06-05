@@ -36,7 +36,7 @@ export default function Page() {
                 type: "email" as const,
                 placeholder: "Email",
                 value: email,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value),
+                onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setEmail(e.target.value),
                 required: true,
             },
             {
@@ -44,7 +44,7 @@ export default function Page() {
                 type: "password" as const,
                 placeholder: "Password",
                 value: password,
-                onChange: (e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value),
+                onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => setPassword(e.target.value),
                 required: true,
             },
         ],

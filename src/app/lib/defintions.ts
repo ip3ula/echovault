@@ -12,7 +12,7 @@ export type Field = {
 export type Button = {
     name: string,
     type?: "button" | "submit" | "reset",
-    onClick:  string | ((...args: unknown[]) => unknown),
+    onClick:  unknown
 }
 
 type AdditionalLinkes = {
@@ -47,8 +47,8 @@ export interface CardQuery{
 }
 
 export interface CapsuleQuery{
-    id: string,
-    title: string,
+    id?: string,
+    title?: string,
     message?: string | null,
     unlockDate?: string,
     createdAt?: string,

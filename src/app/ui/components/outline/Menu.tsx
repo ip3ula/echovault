@@ -6,7 +6,11 @@ import clsx from "clsx";
 import { useSession } from "next-auth/react";
 import UserData from "../common/UserData";
 
-export default function Menu({ setMenu }) {
+interface MenuProps {
+    setMenu: (open: boolean) => void;
+}
+
+export default function Menu({ setMenu }: MenuProps) {
     const { data: session } = useSession();
     console.log('session',session)
     const user = session?.user;
@@ -24,8 +28,14 @@ export default function Menu({ setMenu }) {
     return (
         <div className="fixed bg-roseWater w-[50vw] max-w-70 flex flex-col top-17 left-[6vw] border border-node gap-3 p-4 lg:top-20 z-20 pb-10 pt-7">
         {user && (
-            <UserData user={user} />
-        )}
+    <UserData
+        user={{
+            name: user.name ?? "",
+            email: user.email ?? "",
+            image: user.image ?? ""
+        }}
+    />
+)}
             {links.map(({ name, href }) => {
                 if (name === 'logout' && !user) {
                     return null;

@@ -7,7 +7,7 @@ import CopyButton from '../common/CopyButton';
 
 export default function DetailedCapsule({ capsule }: { capsule:  CapsuleQuery}) {
 
-  const date = new Date(capsule.unlockDate);
+  const date = new Date(capsule.unlockDate ?? '');
   const formatted = date.toLocaleDateString();
 
   return (
@@ -24,7 +24,7 @@ export default function DetailedCapsule({ capsule }: { capsule:  CapsuleQuery}) 
           />
         </div>
         <div className="bg-sageGreen p-10 lg:p-15 text-white lg:col-span-2 flex flex-col justify-between">
-          <Paragraph text={capsule.sealed ? "You can't view its contents until that date." : capsule.message} />
+          <Paragraph text={capsule.sealed ? "You can't view its contents until that date." : (capsule.message ?? '')} />
           <div className="py-10 flex flex-col gap-3">
             <CopyButton />
           </div>

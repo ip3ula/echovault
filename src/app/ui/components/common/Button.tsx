@@ -6,7 +6,7 @@ export default function Button({ button }: {button: ButtonQuery} ) {
     console.log(button.onClick);
     return (
             <button
-                onClick={typeof button.onClick === "function" ? button.onClick : undefined}
+                onClick={typeof button.onClick === "function" ? button.onClick as React.MouseEventHandler<HTMLButtonElement> : undefined}
                 type={button.type}
                 className="bg-node text-white w-[90%] px-5 py-2 block mx-auto lg:py-3 hover:cursor-pointer"
             >

@@ -12,7 +12,7 @@ export default function Page() {
     title: '',
     message: '',
     unlockDate: '',
-    isPublic: null
+    isPublic: false
   });
   const [error, setError] = useState('');
   const handleClick = async (e: React.FormEvent) => {

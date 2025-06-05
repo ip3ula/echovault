@@ -9,18 +9,18 @@ export default function Form({form}: {form: FormQuery}) {
         <div className="w-[90vw] lg:w-[70vw]  grid flex-col-1 lg:grid-cols-3 border border-node">
             
             <div className="bg-roseWater py-15 px-10 lg:col-span-1 flex flex-col gap-3 lg:gap-5 items-center justify-start">
-                <Headline text={form.headline} />
-                <SubHeadLine text={form.subHeadline} />
+                <Headline text={form.headline ?? ''} />
+                <SubHeadLine text={form.subHeadline ?? ''} />
                 <p className='text-red-400 text-center'>{form.message}</p>
             </div>
             <div className="bg-sageGreen p-2 sm:p-5 lg:col-span-2">
 
         <section className='py-15'>
             <form className='flex flex-col gap-2 lg:gap-4 items-center justify-center'>
-                  {form.fields.map(field => (
+                  {form.fields?.map(field => (
                       <Field field={field} key={field.name} />))}
                       <div className='mt-15 flex flex-col gap-3 w-full items-center'>
-                  {form.buttons.map(button => (
+                  {form.buttons?.map(button => (
                     <Button button={button} key={button.name} />                   
                   ))}
                       </div>

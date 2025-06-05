@@ -1,6 +1,8 @@
+import { CapsuleQuery } from "../../../lib/defintions"
+
 import Capsule from "./Capsule"
 
-export default async function Capsules({capsules}) {
+export default async function Capsules({capsules}: {capsules: CapsuleQuery[]}) {
     
     if (!capsules || capsules.length === 0) {
         return (
