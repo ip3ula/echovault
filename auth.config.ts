@@ -13,6 +13,13 @@ declare module "next-auth" {
       image?: string | null;
     }
   }
+
+  interface User {
+    id: string;
+    name?: string | null;
+    email?: string | null;
+    image?: string | null;
+  }
 }
 
 const prisma = new PrismaClient();
@@ -20,27 +27,29 @@ const prisma = new PrismaClient();
 export const authConfig: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
-    signIn: "/login", 
+    signIn: "/login",
   },
   session: {
-    strategy: "jwt"
+    strategy: "jwt",
   },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
     CredentialsProvider({
       name: "Credentials",
       credentials: {
         email: { label: "Email", type: "email" },
-        password: { label: "Password", type: "password" }
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
+
         const user = await prisma.user.findUnique({
-          where: { email: credentials.email }
+          where: { email: credentials.email.toLowerCase() },
         });
+
         if (user && user.password) {
           const isValid = await bcrypt.compare(credentials.password, user.password);
           if (isValid) {
@@ -48,20 +57,40 @@ export const authConfig: AuthOptions = {
             return { id, name, email, image };
           }
         }
+
         return null;
-      }
-    })
+      },
+    }),
   ],
   callbacks: {
     async jwt({ token, user }) {
-      if (user) {
-        token.id = user.id;
+      if (user?.email) {
+        // Ensure user exists in DB
+        const existingUser = await prisma.user.findUnique({
+          where: { email: user.email.toLowerCase() },
+        });
+
+        if (!existingUser) {
+          const newUser = await prisma.user.create({
+            data: {
+              name: user.name,
+              email: user.email.toLowerCase(),
+              image: user.image,
+            },
+          });
+          token.id = newUser.id;
+        } else {
+          token.id = existingUser.id;
+        }
+
         token.name = user.name;
         token.email = user.email;
         token.image = user.image;
       }
+
       return token;
     },
+
     async session({ session, token }) {
       if (token && session.user) {
         session.user.id = token.id as string;
@@ -70,6 +99,6 @@ export const authConfig: AuthOptions = {
         session.user.image = token.image as string;
       }
       return session;
-    }
-  }
+    },
+  },
 };

@@ -56,19 +56,39 @@ export async function getPublicCapsules() {
 
 export async function getCapsule(id: string) {
   try {
+    const session = await getServerSession(authConfig);
+    const userId = session ? (session as { user: { id: string } }).user.id : null;
+
     const data = await sql`
       SELECT 
-        id,
-        title,
-        "unlockDate" AS "unlockDate",
-        ("unlockDate" >= CURRENT_DATE) AS "sealed",
-        CASE 
-          WHEN "unlockDate" <= CURRENT_DATE THEN message 
-          ELSE NULL 
-        END AS message
+      "Capsule".id,
+      "Capsule".title,
+      "Capsule"."unlockDate" AS "unlockDate",
+      ("Capsule"."unlockDate" >= CURRENT_DATE) AS "sealed",
+      CASE 
+        WHEN "Capsule"."unlockDate" <= CURRENT_DATE THEN "Capsule".message 
+        ELSE NULL 
+      END AS message,
+      "Capsule"."isPublic",
+      "Capsule"."userId"
       FROM "Capsule"
-      WHERE id = ${id}
+      WHERE "Capsule".id = ${id}
+      LIMIT 1
     `;
+
+    const capsule = data.rows[0];
+    if (!capsule) return null;
+
+    // If not public and not the owner, return null
+    if (!capsule.isPublic && capsule.userId !== userId) {
+      return null;
+    }
+
+    // Remove userId and isPublic from result if you don't want to expose them
+    delete capsule.userId;
+    delete capsule.isPublic;
+
+    return [capsule];
     return data.rows;
   } catch (err) {
     console.log('error fetching capsule', err);

@@ -10,7 +10,7 @@ interface User {
 
 export default function UserData({user}: { user: User }) {
     return (
-        <div className="flex items-center gap-2 sm:gab-3 mb-10 w-full">
+        <div className="flex items-center gap-2 sm:gab-3 mb-3 w-full">
             {user.image ? (
         <Image
           src={user.image}
