@@ -1,5 +1,5 @@
 
-type FieldType = 'text' | 'email' | 'textarea' | 'password' | 'radio' | 'password' | 'date' | 'file'
+type FieldType = 'text' | 'email' | 'textarea' | 'radio' | 'password' | 'date' | 'file'
 
 export type Field = {
     name: string,
@@ -11,7 +11,8 @@ export type Field = {
 
 export type Button = {
     name: string,
-    onClick:  () => void
+    type?: "button" | "submit" | "reset",
+    onClick:  string | ((...args: unknown[]) => unknown),
 }
 
 type AdditionalLinkes = {
@@ -19,13 +20,21 @@ type AdditionalLinkes = {
     linkText: string,
     href: string
 }
-
+type FormData = {
+    title: string,
+    message: string,
+    unlockDate: string,
+    isPublic: boolean,
+}
 export interface FormQuery{
-    headline: string,
-    subHeadline: string,
-    fields: Field[],
-    buttons: Button[],
-    additionalLinks?: AdditionalLinkes[]
+    headline?: string,
+    subHeadline?: string,
+    fields?: Field[],
+    formData?: FormData,
+    setFormData?: React.Dispatch<React.SetStateAction<FormData>>,
+    buttons?: Button[],
+    additionalLinks?: AdditionalLinkes[],
+    message?: string,
 }
 
 export interface CardQuery{
@@ -37,21 +46,15 @@ export interface CardQuery{
     buttonFunction: () => void
 }
 
-type Media = {
-    type: "image" | "audio",
-    url: string
-}
-
 export interface CapsuleQuery{
     id: string,
     title: string,
-    message: string,
-    unlockDate: string,
-    createdAt: string,
-    isPublic: boolean,
-    media: Media,
-    sealed: boolean,
-    userId: string
+    message?: string | null,
+    unlockDate?: string,
+    createdAt?: string,
+    isPublic?: boolean,
+    sealed?: boolean,
+    userId?: string
 }
 
 export interface LinkQuery{

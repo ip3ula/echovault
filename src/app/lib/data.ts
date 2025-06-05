@@ -1,30 +1,57 @@
-import { createClient } from "@vercel/postgres";
 import { sql } from "@vercel/postgres"
 import { unstable_noStore as noStore } from "next/cache"
-
-// export async function connectToDB() {
-//     const client = createClient()
-//     await client.connect()
-
-//     try {
-//         if(client) {
-//             console.log('connected to DB')
-//             retur n client
-//         }
-//     } catch (err) {
-//         console.log('error connecting to DB', err)
-//     }
-// }
+import { getServerSession } from "next-auth/next"
+import { authConfig } from "../../../auth.config"
 
 export async function getCapsules() {
-    try{
-        noStore()
-        const data = await sql`SELECT id, title, unlockdate As "unlockDate" , ispublic As "isPublic" FROM capsules ORDER BY title`
-    return data.rows
-    } catch (err) {
-        console.log('error fetching capsules', err)
-        throw err
-    }
+  const session = await getServerSession(authConfig)
+  if (!session) {
+    throw new Error("Unauthorized access: No session found");
+  }
+  const userId = (session as { user: { id: string; email: string; name?: string } }).user.id;
+  console.log('user', userId)
+  try {
+    noStore();
+    const data = await sql`
+      SELECT 
+        "Capsule".id, 
+        "Capsule".title, 
+        "Capsule"."unlockDate" AS "unlockDate", 
+        "Capsule"."isPublic" AS "isPublic",
+        "Capsule".media,
+        "User".name AS "userName",
+        "User".email AS "userEmail"
+      FROM "Capsule"
+      JOIN "User" ON "Capsule"."userId" = "User".id
+      WHERE "User".id = ${userId}
+      ORDER BY "Capsule".title
+    `;
+    return data.rows;
+  } catch (err) {
+    console.log('error fetching capsule', err);
+    throw err;
+  }
+}
+
+export async function getPublicCapsules() {
+  try {
+    noStore();
+    const data = await sql`
+      SELECT
+        "Capsule".id,
+        "Capsule".title,
+        "Capsule"."unlockDate" AS "unlockDate",
+        "Capsule"."isPublic" AS "isPublic"
+      FROM "Capsule"
+      WHERE "Capsule"."isPublic" = true
+      ORDER BY "Capsule"."unlockDate" DESC
+      LIMIT 3
+    `;
+    return data.rows;
+  } catch (err) {
+    console.log('error fetching public capsule', err);
+    throw err;
+  }
 }
 
 export async function getCapsule(id) {
@@ -33,13 +60,13 @@ export async function getCapsule(id) {
       SELECT 
         id,
         title,
-        unlockdate AS "unlockDate",
-        (unlockdate >= CURRENT_DATE) AS "sealed",
+        "unlockDate" AS "unlockDate",
+        ("unlockDate" >= CURRENT_DATE) AS "sealed",
         CASE 
-          WHEN unlockdate <= CURRENT_DATE THEN message 
+          WHEN "unlockDate" <= CURRENT_DATE THEN message 
           ELSE NULL 
         END AS message
-      FROM capsules
+      FROM "Capsule"
       WHERE id = ${id}
     `;
     return data.rows;

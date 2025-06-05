@@ -3,13 +3,12 @@
 import { useEffect } from 'react';
 import { Button as ButtonQuery } from '../lib/defintions';
 
-import Headline from '../ui/components/Headline';
-import Paragraph from '../ui/components/Paragraph';
-import Button from '../ui/components/Button';
+import Headline from '../ui/components/headlines/Headline';
+import Paragraph from '../ui/components/headlines/Paragraph';
+import Button from '../ui/components/common/Button';
 
 export default function Error({
   error,
-  reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;

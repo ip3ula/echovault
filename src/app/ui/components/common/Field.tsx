@@ -1,11 +1,11 @@
-import { Field as FieldQuery } from "../../lib/defintions";
+import { Field as FieldQuery } from "../../../lib/defintions";
 
 export default function Field({ field }: { field: FieldQuery }) {
   if (field.type === 'radio') {
     return (
-      <div className="flex relative gap-2 border border-node bg-roseWater text-white w-[90%] px-5 py-2 lg:py-3">
+      <div className="flex relative gap-2 border border-node bg-roseWater text-white w-[90%] px-5 py-3 lg:py-4">
         <p>{field.name}</p>
-        <div className="flex absolute right-0">
+        <div className="flex absolute right-1">
           {field.values.map((value) => {
             const id = `${field.name}-${value}`;
             return (
@@ -21,7 +21,7 @@ export default function Field({ field }: { field: FieldQuery }) {
                 />
                 <label
                   htmlFor={id}
-                  className="px-5 py-2 lg:py-3 border-l border-node cursor-pointer transition
+                  className="px-5 py-3 lg:py-4 border-l border-node cursor-pointer transition
                              peer-checked:bg-sageGreen"
                 >
                   {value}
@@ -38,11 +38,12 @@ export default function Field({ field }: { field: FieldQuery }) {
     return (
       <textarea
         placeholder={field.name}
-        className="border border-node bg-roseWater text-white w-[90%] px-5 py-2 outline-0 focus:border-2"
+        className="border border-node bg-roseWater text-white w-[90%] px-5 py-3 outline-0 focus:border-2"
         rows={4}
-        value={field.value}
+        value={typeof field.value === "string" ? field.value : ""}
         onChange={field.onChange}
         name={field.name}
+        required={true}
       />
     );
   }
@@ -51,10 +52,11 @@ export default function Field({ field }: { field: FieldQuery }) {
     <input
       type={field.type}
       placeholder={field.name}
-      value={field.value}
+      value={typeof field.value === "string" ? field.value : ""}
       onChange={field.onChange}
-      className="border border-node bg-roseWater text-white w-[90%] px-5 py-2 lg:py-3 outline-0 focus:border-2"
+      className="border border-node bg-roseWater text-white w-[90%] px-5 py-3 lg:py-4 outline-0 focus:border-2"
       name={field.name}
+      required={field.type !== 'file'} 
     />
   );
 }

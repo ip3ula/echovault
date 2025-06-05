@@ -1,9 +1,9 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import Headline from "../../ui/components/Headline";
-import Paragraph from "../../ui/components/Paragraph";
-import Button from "../../ui/components/Button";
+import Headline from "../../ui/components/headlines/Headline";
+import Paragraph from "../../ui/components/headlines/Paragraph";
+import Button from "../../ui/components/common/Button";
 import { Button as ButtonQuery } from "../../lib/defintions";
 
 export default function NotFound() {

@@ -1,6 +1,6 @@
 'use client'
 
-import { Button as ButtonQuery } from '../../lib/defintions';
+import { Button as ButtonQuery } from '../../../lib/defintions';
 import { useState } from 'react' 
 import Button from './Button';
 

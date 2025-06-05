@@ -1,17 +1,19 @@
 import { FormQuery } from '../../lib/defintions'
 
-import Headline from './Headline'
-import SubHeadLine from './SubHeadline'
-import Field from './Field'
-import Button from './Button'
+import Headline from './headlines/Headline'
+import SubHeadLine from './headlines/SubHeadline'
+import Field from './common/Field'
+import Button from './common/Button'
 export default function Form({form}: {form: FormQuery}) {
     return (
         <div className="w-[90vw] lg:w-[70vw]  grid flex-col-1 lg:grid-cols-3 border border-node">
-            <div className="bg-roseWater py-15 p-5 lg:col-span-1">
+            
+            <div className="bg-roseWater py-15 px-10 lg:col-span-1 flex flex-col gap-3 lg:gap-5 items-center justify-start">
                 <Headline text={form.headline} />
                 <SubHeadLine text={form.subHeadline} />
+                <p className='text-red-400 text-center'>{form.message}</p>
             </div>
-            <div className="bg-sageGreen p-5 lg:col-span-2">
+            <div className="bg-sageGreen p-2 sm:p-5 lg:col-span-2">
 
         <section className='py-15'>
             <form className='flex flex-col gap-2 lg:gap-4 items-center justify-center'>

@@ -1,26 +1,11 @@
-// app/capsule/[id]/DetailedCapsule.tsx
 'use client';
+import { CapsuleQuery } from '../../../lib/defintions';
+import Paragraph from '../headlines/Paragraph';
+import Headline from '../headlines/Headline';
+import SubHeadLine from '../headlines/SubHeadline';
+import CopyButton from '../common/CopyButton';
 
-import Paragraph from '../../ui/components/Paragraph';
-import Headline from '../../ui/components/Headline';
-import SubHeadLine from '../../ui/components/SubHeadline';
-import Button from '../../ui/components/Button';
-import { Button as ButtonQuery } from '../../lib/defintions';
-import CopyButton from './CopyButton';
-
-export default function DetailedCapsule({ capsule }: { capsule: any }) {
-  const handleEdit = () => {
-    console.log('Edit button clicked');
-  };
-
-  const handleDelete = () => {
-    console.log('Delete button clicked');
-  };
-
-  const buttons: ButtonQuery[] = [
-    { name: 'edit', onClick: 'handleEdit' },
-    { name: 'delete', onClick: 'handleDelete' }
-  ];
+export default function DetailedCapsule({ capsule }: { capsule:  CapsuleQuery}) {
 
   const date = new Date(capsule.unlockDate);
   const formatted = date.toLocaleDateString();
@@ -38,13 +23,10 @@ export default function DetailedCapsule({ capsule }: { capsule: any }) {
             }
           />
         </div>
-        <div className="bg-sageGreen p-5 lg:p-10 text-white lg:col-span-2">
+        <div className="bg-sageGreen p-10 lg:p-15 text-white lg:col-span-2 flex flex-col justify-between">
           <Paragraph text={capsule.sealed ? "You can't view its contents until that date." : capsule.message} />
           <div className="py-10 flex flex-col gap-3">
             <CopyButton />
-            {buttons.map((button) => (
-              <Button key={button.name} button={button} />
-            ))}
           </div>
         </div>
       </div>

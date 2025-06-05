@@ -1,5 +1,5 @@
-import Headline from "../ui/components/Headline";
-import Paragraph from "../ui/components/Paragraph";
+import Headline from "../ui/components/headlines/Headline";
+import Paragraph from "../ui/components/headlines/Paragraph";
 
 export default function Page() {
     return(

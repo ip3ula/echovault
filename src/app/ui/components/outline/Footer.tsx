@@ -1,12 +1,11 @@
-import { LinkQuery } from "../../lib/defintions";
+import { LinkQuery } from "../../../lib/defintions";
 
 import Link from "next/link"
-import SubHeadLine from "./SubHeadline";
+import SubHeadLine from "../headlines/SubHeadline";
 
 export default function Footer() {
   const links: LinkQuery[] = [
     { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
     { name: 'Privacy Policy', href: '/privacy' },
   ];
 
