@@ -11,7 +11,7 @@ export default function DetailedCapsule({ capsule }: { capsule:  CapsuleQuery}) 
   const formatted = date.toLocaleDateString();
 
   return (
-    <div className="p-5 flex justify-center h-screen items-center">
+    <div className="p-5 flex justify-center min-h-screen items-center overflow-y-auto py-20">
       <div className="border border-node lg:grid lg:grid-cols-3 max-w-200">
         <div className="bg-roseWater p-5 lg:p-10 lg:col-span-1 text-center">
           <Headline text={capsule.sealed ? 'Capsule Still Sealed' : 'Capsule Unsealed'} />
